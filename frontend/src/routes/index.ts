@@ -1,6 +1,4 @@
-import { createRouter as createVueRouter, createWebHashHistory, Router } from "vue-router";
-import Home from "../views/Home.vue";
-import Profile from "../views/Profile.vue";
+import { createRouter as createVueRouter, createWebHistory, Router } from "vue-router";
 import { createAuthGuard } from "@auth0/auth0-vue";
 import { App } from 'vue';
 
@@ -10,15 +8,21 @@ export function createRouter(app: App): Router {
       {
         path: "/",
         name: "home",
-        component: Home
+        component: () => import("@/views/Home.vue"),
       },
       {
         path: "/profile",
         name: "profile",
-        component: Profile,
+        component: () => import("../views/Profile.vue"),
+        beforeEnter: createAuthGuard(app)
+      },
+      {
+        path: "/callback",
+        name: "callback",
+        component: () => import("@/views/Callback.vue"),
         beforeEnter: createAuthGuard(app)
       }
     ],
-    history: createWebHashHistory()
+    history: createWebHistory()
   })
 }
