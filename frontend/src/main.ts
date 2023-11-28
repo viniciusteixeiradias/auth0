@@ -3,7 +3,11 @@ import App from './App.vue'
 
 import { createAuth0 } from '@auth0/auth0-vue';
 
+import { createRouter } from './routes';
+
 const app = createApp(App);
+
+app.use(createRouter(app))
 
 app.use(
   createAuth0({
