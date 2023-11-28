@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
 
 
 app.post('/user', (req, res) => {
-  const receivedUser = req.body;
-  console.log('Received User:', receivedUser);
-  throw Error("Some error here")
+  const user = req.body;
+  console.log('Received User:', user);
+  res.json({ user })
 });
 
 app.listen(port, () => {
