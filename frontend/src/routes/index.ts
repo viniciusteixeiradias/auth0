@@ -11,15 +11,15 @@ export function createRouter(app: App): Router {
         component: () => import("@/views/Home.vue"),
       },
       {
-        path: "/profile",
-        name: "profile",
-        component: () => import("../views/Profile.vue"),
+        path: "/callback",
+        name: "callback",
+        component: () => import("../views/Callback.vue"),
         beforeEnter: createAuthGuard(app)
       },
       {
-        path: "/callback",
-        name: "callback",
-        component: () => import("@/views/Callback.vue"),
+        path: "/project",
+        name: "project",
+        component: () => import("../views/Project.vue"),
         beforeEnter: createAuthGuard(app)
       }
     ],
